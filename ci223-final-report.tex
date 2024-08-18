@@ -1,0 +1,127 @@
+% !TEX root = ci223-project-plan.tex
+% !TEX program = lualatex
+
+% Template for MSc final reports
+% ESE Department - Imperial College London
+%
+% INSTRUCTIONS
+% (1) Compile using LuaLatex (it is the successor of pdflatex). To check this on Overleaf, click on the Menu on the top left.
+% (2) Complete the SETUP below
+% (3) Students of Imperial College can claim a free premium Overleaf account, see https://www.imperial.ac.uk/admin-services/ict/self-service/computers-printing/devices-and-software/get-software/get-software-for-students/overleaf/ 
+% Claim the free premium account because as your report becomes more and more complex you may reach the timeout limit of the free account.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DO NOT MODIFY FROM HERE ...
+\documentclass[11pt]{ic_ese_thesis}
+
+\usepackage[style=ieee,backend=biber,hyperref=auto]{biblatex}
+\addbibresource{references.bib}
+% ... TO HERE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%% SETUP %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EDIT THE FOLLOWING INFORMATION WITH YOUR DATA
+% COMPLETE PART A
+% IF YOU ARE DOING A MENG/BENG COMPLETE ALSO PART B
+% IF YOU ARE DOING AN MSC IGNORE PART B
+% LINES STARTING WITH % ARE COMMENTS. UNCOMMENT JUST ONE OF A SET OF OPTIONS
+% MAKE SURE YOU CHECK AND UPDATE ALL INFORMATION, INCLUDING SUBMITYEAR
+
+%%%%%%%%%%% PART A %%%%%%%%%%%
+
+\degree{MSc}
+
+\title{Innovative Approaches to Asset Prediction: Combining Deep Learning with Financial Modelling}
+\subtitle{Final Report} % use \subtitle{} to remove the subtitle
+\author{C. Ioannidis}
+\cid{02533490}
+\supervisor{Prof. Pasquale Della Corte \\[1mm] Prof. Walter Distaso \\[1mm] Dr Lluis Guasch } %UK: Dr no dot, prof has dot
+\submityear{2024}
+
+\course{Applied Computational Science and Engineering}
+
+
+
+% Do you want a list of figures?
+% Do you want a list of tables?
+% Do you want an acknowledgement page?
+% Do you want a list of acronyms?
+\setboolean{list_of_figures}{false} % false or true - Default is true
+\setboolean{list_of_tables}{false} % false or true - Default is false
+\setboolean{acknowledgement}{false} % false or true - Default is true
+\setboolean{acronyms}{false} % false or true - Default is true
+
+\setboolean{edge_labels}{true} % default for MSc
+
+
+\setboolean{double_spacing}{false} %Default is true. If you want to change this, ask your supervisor if they are OK with singlespacing.
+
+%%%%%%%%%%% PART B %%%%%%%%%%% 
+% ONLY FOR MENG/BENG. MSC IGNORE THIS
+% THESE ADDITIONAL SETTINGS HAVE BEEN ASKED BY THE MEng COMMITTEE BUT NOT BY THE MSC COMMITTEE
+% Is this an interim report or final thesis?
+\setboolean{final_thesis}{true} % true for final Thesis / false for interim report
+\secondmarker{} %If you do not know who your second marker is, use \secondmarker{}
+
+%%%%%%%%%%%%% END SETUP %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ADDITIONAL PACKAGES
+% You can add your packages below. Note that the following packages are already loaded: pgfcore, geometry, bookmark, graphicx, setspace, kantlipsum, fontspec, polygrossia (default English), minitoc, silence, background, xpatch, tikzpagenodes, totcount, fancyhdr, titlesec and the tikz libraries calc, shapes.symbols and shapes.misc  
+
+%Examples
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+%...
+
+\begin{document}
+
+\thesisspacing
+
+\preamble % Do not change - required
+
+% EDIT THE CONTENT OF THE FILES
+% Abstract.tex
+% OrigSta_Copyright.tex
+% Acknowledgement.tex
+% You can find them under the folder 
+% "chapters" on the left column
+
+% ADD AS MANY CHAPTERS AS NEEDED
+% BY CREATING .TEX FILES IN THE FOLDER chapters
+% AND ADDING \input{namechapter.tex} BELOW
+\thesisspacing
+\input{chapters/Chapter1.tex}
+\thesisspacing
+\input{chapters/Chapter2.tex}
+\thesisspacing
+\input{chapters/Chapter3.tex}
+\thesisspacing
+\input{chapters/Chapter4.tex}
+\thesisspacing
+\input{chapters/Chapter5.tex}
+
+% You can change the title of the conclusions by changing the text between { }
+% \conclusions{Conclusions} % Do not remove - required
+% EDIT THE CONTENT OF THE FILE
+% Conclusions.tex
+% You can find it under the folder
+% "chapters" on the left column
+
+% APPENDICES ARE OPTIONAL
+% COMMENT OUT BOTH LINES BELOW TO REMOVE THEM
+% ADD CHAPTERS TO ADD MULTIPLE APPENDICES
+\appendix
+% \input{AppendixA.tex}
+% \input{AppendixB.tex} % Example second appendix (need to create the file in "chapters")
+
+
+\cleardoublepage % Do not change - required
+\RemoveLabels % Do not change - required
+\thesisspacing % Do not change - required
+\printbibliography[title={Bibliography},heading=bibintoc] % Do not change - required
+
+\end{document}

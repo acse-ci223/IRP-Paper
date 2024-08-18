@@ -1,0 +1,34 @@
+name: Push PDF to Another Repo
+
+on:
+  push:
+    paths:
+      - 'ci223-project-plan.pdf'
+
+jobs:
+  push-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Git
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Copy PDF to another repo
+      env:
+        TARGET_REPO: 'ese-msc-2023/irp-ci223'
+        TARGET_BRANCH: 'main'
+        COMMIT_MESSAGE: 'Update PDF'
+        PDF_FILE: 'ci223-final-report.pdf'
+        TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
+      run: |
+        git clone https://x-access-token:${TOKEN}@github.com/${TARGET_REPO}.git target_repo
+        cp ${PDF_FILE} target_repo/deliverables
+        cd target_repo
+        git add deliverables/${PDF_FILE}
+        git commit -m "${COMMIT_MESSAGE}"
+        git push origin ${TARGET_BRANCH}

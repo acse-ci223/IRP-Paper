@@ -1,0 +1,15 @@
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.maf
+*.mtc*
+*.xml
+*.gz
+*.toc
+
+.vscode
+.DS_Store
