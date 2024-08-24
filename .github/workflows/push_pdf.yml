@@ -3,7 +3,7 @@ name: Push PDF to Another Repo
 on:
   push:
     paths:
-      - 'ci223-project-plan.pdf'
+      - 'ci223-final-report.pdf'
 
 jobs:
   push-pdf:
