@@ -12,8 +12,128 @@
 % COPY THEM IN ANY NEW CHAPTER
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Training}
-\input{chapters/Chap2/Training}
+% \section{Training}
+% \input{chapters/Chap2/Training}
 
-\section{Evaluating}
-\input{chapters/Chap2/Evaluating}
+% \section{Evaluating}
+% \input{chapters/Chap2/Evaluating}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thesisspacing % CHAPTER
+% COPY THEM IN ANY NEW CHAPTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \section{Methodology}
+
+This section outlines the technical approach used in developing and testing the Convolutional Neural Network (CNN) model for financial market prediction. The methodology is divided into several components: data acquisition and preprocessing, model development, evaluation and backtesting, and visualization and reporting. Each component is described in detail, highlighting the tools, libraries, and techniques used throughout the development process.
+
+\section{Data Acquisition and Preprocessing}
+
+\subsection{Data Acquisition and Scope}
+
+The initial phase of the project involved the acquisition of high-quality financial time-series data from multiple sources, including the Center for Research in Security Prices (CRSP), Kaggle, and Yahoo! Finance. These datasets provided comprehensive OHLC (Open, High, Low, Close) data across a wide range of securities listed on major U.S. stock exchanges, covering a period from the 1990s to 2017. The choice of this timeframe was deliberate to ensure that the training data was unrelated to the backtesting period (June 2019 to June 2024), thereby minimizing the risk of overfitting.
+
+\subsection{Data Preprocessing and Integration}
+
+Once acquired, the data underwent a rigorous preprocessing phase to ensure quality and suitability for deep learning applications. This phase involved several steps:
+
+\begin{itemize}
+    \item \textbf{Data Cleaning}: Handling missing values using forward and backward filling techniques, and removing outliers using statistical methods such as Z-score analysis and interquartile range (IQR) filtering.
+    \item \textbf{Normalization}: Standardizing the scale of OHLC data to ensure consistency across the dataset, typically scaling values between 0 and 1.
+    \item \textbf{Transformation to Image Format}: The normalized OHLC data was converted into 64x64 pixel candlestick chart images using libraries such as Pandas, PIL, and Plotly. These images were then stored as .npy files for efficient loading and processing during the model training phase.
+\end{itemize}
+
+\textbf{Simplified Pseudocode for Data Preparation}:
+\begin{verbatim}
+Read CSV data files
+For each data point:
+    Clean and normalize data
+    Convert OHLC data to candlestick chart image
+    Save image as .npy file
+\end{verbatim}
+
+\section{Model Development}
+
+\subsection{CNN Model Development}
+
+The core of the methodology focused on developing a robust CNN model using PyTorch, designed to predict financial market conditions based on visual representations of OHLC data.
+
+\begin{itemize}
+    \item \textbf{Model Architecture}: The CNN architecture was constructed with multiple layers, including convolutional layers, pooling layers, dropout layers, and fully connected layers. The architecture was optimized to capture spatial patterns in the candlestick chart images.
+    \item \textbf{Training Process}: The model was trained using GPU acceleration (CUDA) to handle large datasets efficiently. Hyperparameters such as learning rates, batch sizes, and epochs were carefully tuned to optimize model performance.
+\end{itemize}
+
+\textbf{Simplified Pseudocode for CNN Model Development}:
+\begin{verbatim}
+Define CNN architecture with multiple layers
+Initialize model parameters
+For each epoch:
+    Load image data
+    Forward pass through the network
+    Compute loss and gradients
+    Update model parameters
+Save trained model
+\end{verbatim}
+
+\section{Evaluation and Backtesting}
+
+\subsection{Model Evaluation}
+
+The CNN model, developed as a classifier, was evaluated using standard classification metrics to determine its performance in distinguishing between various market conditions:
+
+\begin{itemize}
+    \item \textbf{Accuracy}: Proportion of correct predictions out of the total number of predictions.
+    \item \textbf{Precision}: Proportion of true positive predictions out of all positive predictions made by the model.
+    \item \textbf{Recall}: Model's sensitivity to correctly identifying all actual instances of a specific market condition.
+    \item \textbf{F1 Score}: Harmonic mean of precision and recall, balancing the trade-off between these metrics.
+\end{itemize}
+
+\subsection{Backtesting Strategy}
+
+Following model evaluation, a comprehensive backtesting strategy was employed to assess the CNN model's performance in a simulated trading environment. The strategy was implemented over a period from June 2019 to June 2024, aligning with the model's lookback periods and following a weekly rebalancing approach.
+
+\begin{itemize}
+    \item \textbf{Trading Signals}: The CNN model generated signals to go long, short, or hold based on its predictions.
+    \item \textbf{Backtesting Framework}: QSTrader was used to simulate trades and evaluate the strategy's performance against a benchmark buy-and-hold strategy of the S\&P 500 index.
+    \item \textbf{Performance Metrics}: Key metrics such as cumulative return, Sharpe ratio, maximum drawdown, and volatility were calculated to assess the effectiveness of the CNN-driven strategy.
+\end{itemize}
+
+\textbf{Simplified Pseudocode for Backtesting Strategy}:
+\begin{verbatim}
+Load trained model
+For each backtesting period:
+    Generate trading signals (long, short, hold)
+    Execute trades in simulated environment
+    Calculate performance metrics (return, Sharpe ratio, drawdown)
+Compare performance to buy-and-hold benchmark
+\end{verbatim}
+
+\section{Visualization and Reporting}
+
+\begin{itemize}
+    \item \textbf{Rationale}: To provide a clear and comprehensive visualization of the model's performance and the results of the backtesting strategy.
+    \item \textbf{Implementation}: Utilized Matplotlib to generate plots and charts illustrating key performance metrics and outcomes.
+\end{itemize}
+
+\textbf{Simplified Pseudocode for Visualization}:
+\begin{verbatim}
+Collect performance metrics
+Generate visual plots for cumulative return, Sharpe ratio, drawdown
+Display comparison graphs
+Export visual reports
+\end{verbatim}
+
+\section{Technical Platform and Implementation Details}
+
+The implementation of the solution was conducted entirely using Python, leveraging a range of open-source libraries and frameworks to facilitate various aspects of data processing, model development, and evaluation. The development environment primarily utilized Visual Studio Code (VSCode), which provided a robust platform for writing, testing, and organizing the Python scripts into modular files. This modular approach allowed for the separation of different functional components, such as data preparation, model training, and backtesting, thereby enhancing maintainability and facilitating iterative development.
+
+For data processing and visualization, libraries such as Pandas, PIL, Plotly, and Matplotlib were employed. Pandas was utilized for data manipulation tasks, including reading CSV files and handling missing values, while PIL and Plotly were used to generate candlestick chart images from the processed OHLC data. Matplotlib was also employed to create additional visualizations, both during the exploratory data analysis phase and for presenting the final results.
+
+The core of the model development was implemented using PyTorch, a popular deep learning framework known for its flexibility and support for dynamic computation graphs. PyTorch, in combination with CUDA, enabled efficient training of the CNN model on GPUs, significantly accelerating the computation and allowing for more extensive hyperparameter tuning. NumPy was also utilized for numerical computations, providing efficient array operations and integration with other libraries.
+
+For the evaluation and backtesting of the CNN model, QSTrader, an open-source framework for systematic trading strategies, was used. QSTrader facilitated the simulation of trading strategies based on the model's outputs and enabled a comprehensive analysis of the model's performance against a benchmark buy-and-hold strategy of the S\&P 500 index. This integration allowed for a rigorous assessment of the model's predictive capabilities in a controlled environment, replicating real-world trading scenarios.
+
+The development process was initially carried out within Jupyter Notebooks to allow for interactive experimentation and visualization of results. Upon achieving satisfactory performance, the code was then refactored into standalone Python scripts for a more production-ready deployment. This transition ensured that the final implementation was optimized for operational use while retaining the flexibility and modularity required for further enhancements and testing.
+
+Overall, the choice of tools and frameworks was guided by their suitability for handling large-scale financial data and their ability to support the iterative development of deep learning models. The combination of Python's ecosystem of libraries with a modular development strategy provided a robust and scalable solution, capable of addressing the complex challenges associated with financial market prediction using CNN architectures.
