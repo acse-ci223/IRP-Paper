@@ -1,0 +1,32 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thesisspacing % CHAPTER
+% COPY THEM IN ANY NEW CHAPTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Data Preprocessing and Integration}
+
+The preprocessing phase was a critical step in preparing the data for effective training of the Convolutional Neural Network (CNN) model. Given the nature of financial time-series data and the need to convert it into formats suitable for deep learning, a rigorous and systematic approach was adopted.
+
+Initially, the data underwent a comprehensive cleaning process to address inconsistencies, missing values, and outliers. As the data was sourced from multiple repositories—namely CRSP, Kaggle, and Yahoo! Finance—standardization across datasets was paramount. Missing values were handled using techniques such as forward and backward filling to maintain the temporal continuity of the data, while outliers were identified and removed using statistical methods like Z-score analysis and interquartile range (IQR) filtering. This step was essential to ensure that the data fed into the CNN models was both reliable and representative of typical market behaviors.
+
+Following the cleaning process, normalization was applied to standardize the range of the OHLC (Open, High, Low, Close) data. Normalization is crucial in neural network models to ensure that all input features contribute equally to the learning process. This typically involved scaling the OHLC data to a range between 0 and 1, which helps in achieving faster convergence during the training phase and avoids biases that could arise from differing magnitudes in raw data values.
+
+A significant aspect of the preprocessing phase was the transformation of the normalized OHLC data into 64x64 pixel images, specifically candlestick charts, which serve as the primary input format for the CNN models. The transformation process involved converting sequential OHLC data points into a series of candlestick charts, capturing the temporal dynamics and price movements over fixed intervals. These images were then stored in .npy files, an efficient format for handling large-scale image datasets within NumPy arrays, enabling streamlined data loading and manipulation during the training phase.
+
+This approach of converting OHLC time-series data into visual representations leverages the ability of CNNs to recognize complex spatial patterns, which are indicative of underlying market trends and behaviors. By using a visual representation, the CNN model is better positioned to learn from patterns in the data that are not easily captured through traditional numerical methods, thus enhancing the robustness and accuracy of the predictive model.
+
+\subsection{Model Development and Training}
+
+The development and training of the CNN model were meticulously structured to explore various architectural configurations aimed at maximizing predictive accuracy while minimizing overfitting. The chosen architecture treated the model as a classifier, designed to predict market direction based on the input images derived from OHLC data.
+
+The initial phase of model development involved experimentation with multiple CNN architectures to identify the most effective structure for financial market prediction. This experimentation included testing various combinations of convolutional layers, pooling layers, and activation functions. Key architectural features such as dropout layers were integrated to reduce overfitting by randomly deactivating a subset of neurons during each training iteration. This technique helps to generalize the model, ensuring it does not overly fit the training data at the expense of performance on unseen data.
+
+Residual blocks were also employed to enhance the model's depth and ability to capture complex features. Residual connections facilitate the training of deep networks by allowing gradients to flow more effectively through multiple layers, preventing the vanishing gradient problem commonly encountered in deep learning. This capability is particularly valuable in financial modeling, where deep architectures can uncover complex, non-linear relationships inherent in market data.
+
+In addition to standard CNN layers, the model architecture incorporated Long Short-Term Memory (LSTM) layers to capture sequential dependencies in the time-series data. LSTMs, a type of recurrent neural network (RNN), are well-suited for handling sequences and can retain information across time steps, making them ideal for capturing the temporal dependencies crucial in financial forecasting.
+
+The training dataset, encompassing randomly selected stocks from the U.S. market from the 1990s until 2017, was deliberately chosen to ensure that the model trained on data entirely unrelated to the backtesting period (June 2019 to June 2024). This strategic choice was aimed at preventing any data leakage between the training and testing phases, thereby enhancing the model's generalizability and ensuring that performance metrics reflect true predictive power rather than overfitting to historical data.
+
+The training process involved optimizing the model's parameters through iterative tuning of hyperparameters such as learning rates, batch sizes, and epochs. Optimization algorithms, including Adam and RMSprop, were explored to identify the most effective approach for minimizing the loss function and achieving stable convergence. The model's performance was continuously evaluated using classification metrics such as accuracy, precision, recall, and F1 score, which provided an outline of which configurations were likely to perform best during the subsequent backtesting phase.
+
+By rigorously testing and refining these CNN architectures, the study aimed to identify the model configuration that most effectively captures the complex patterns in financial data, providing a robust tool for predicting market movements and contributing valuable insights to the field of financial analytics.
