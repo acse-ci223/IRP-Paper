@@ -1,0 +1,24 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thesisspacing % CHAPTER
+% COPY THEM IN ANY NEW CHAPTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Future Work}
+
+Building on the findings of this study, several directions for future work can be explored to enhance the performance and applicability of the CNN model for financial market prediction. One promising avenue is the integration of more advanced deep learning architectures, such as Transformers, which have recently gained prominence in natural language processing and sequence modeling. Leveraging the advanced computational capabilities of Transformers could potentially improve the model's ability to capture temporal dependencies and complex patterns in financial time series data. This approach may enhance the model's accuracy and robustness, particularly in identifying market anomalies and outlier events.
+
+Another area for improvement involves the use of ensemble methods that combine different model architectures, such as combining time series forecasting models with the existing CNN classifier. This ensemble approach could leverage the strengths of both models, potentially leading to improved predictive performance in both backtesting and forward testing scenarios. Additionally, incorporating more diverse data sources, such as trading volume, macroeconomic indicators, and sentiment analysis from news and social media, could further enrich the feature set available to the model, enabling it to capture a broader range of market signals and conditions. This idea aligns with findings in prior research, such as those by Bryan Kelly, which demonstrated the positive impact of incorporating additional data features on model performance.
+
+Expanding the application of the model to other asset classes, such as currencies, commodities, and bonds, represents another promising direction. Given the model's demonstrated ability to identify significant market moves in U.S. equities, applying it to other markets could provide valuable insights and further validate its robustness and adaptability. Additionally, exploring methods to effectively filter outliers from the dataset prior to training could help reduce overfitting and improve the model’s generalization capabilities.
+
+Finally, enhancing the backtesting framework to include more sophisticated strategies, such as dynamic rebalancing and risk management techniques, could provide a more comprehensive evaluation of the model's real-world applicability. Incorporating forward testing with live market data would also help validate the model's performance under actual trading conditions, further bridging the gap between theoretical research and practical application.
+
+\section{Conclusion}
+
+This study developed and evaluated a Convolutional Neural Network (CNN) model for predicting financial market movements, leveraging time-series data from U.S. stocks. The research demonstrated that CNN models could provide valuable insights into market dynamics and outperform traditional financial forecasting methods under certain conditions. By expanding the dataset beyond the S\&P 500 to include randomly selected U.S. stocks, the model achieved a more comprehensive understanding of diverse market conditions, ultimately leading to a well-performing model with a Sharpe ratio of 1.20 and a drawdown of 24.46\%.
+
+The implementation challenges, particularly around data balancing and overfitting, were addressed through careful data preprocessing and the introduction of regularization techniques such as dropout layers and leaky ReLU activations. The use of a JSON configuration file for model setup allowed for flexible experimentation with different architectures, leading to an optimized model configuration that was effective in backtesting scenarios. The model's ability to identify market outliers, such as the COVID-19 pandemic, further demonstrated its robustness and adaptability.
+
+However, the study also highlighted several limitations, including the tendency to overfit with complex models and challenges in generalizing across multiple asset classes. These findings suggest that while CNNs hold significant promise for financial forecasting, further research is needed to refine these models and explore new architectures and data sources.
+
+In conclusion, this research contributes to the growing body of literature on the application of deep learning techniques to financial markets. The findings underscore the potential of CNNs to enhance predictive accuracy and provide a foundation for more informed investment strategies. Future work focusing on model refinement, the integration of additional data features, and expansion to other asset classes will further enhance the utility and effectiveness of these models in real-world trading environments.
